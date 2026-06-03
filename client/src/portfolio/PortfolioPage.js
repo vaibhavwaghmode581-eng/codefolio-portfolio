@@ -52,7 +52,7 @@ function PortfolioPage() {
         <h3>Smart Energy Meter</h3>
 
         <p>
-          IoT based smart energy monitoring system using
+          smart pothole detection with alert system
           Raspberry Pi.
         </p>
       </div>
