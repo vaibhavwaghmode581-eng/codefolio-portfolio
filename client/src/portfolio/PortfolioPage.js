@@ -1,75 +1,135 @@
 import { useParams } from "react-router-dom";
 
 function PortfolioPage() {
-  const { username } = useParams();
+  const { username } = useVaibhav();
 
   return (
     <div
       style={{
-        minHeight: "100vh",
         background: "#020617",
         color: "white",
-        padding: "40px",
+        minHeight: "100vh",
         fontFamily: "Arial",
       }}
     >
-      <h1 style={{ fontSize: "50px" }}>
-        {username}
-      </h1>
-
-      <h2 style={{ color: "#38bdf8" }}>
-        Full Stack Developer
-      </h2>
-
-      <p style={{ maxWidth: "600px", marginTop: "20px" }}>
-        I create modern web applications using React,
-        Node.js, Express and MongoDB.
-      </p>
-
-      <br />
-
-      <h2>Skills</h2>
-
-      <ul>
-        <li>React JS</li>
-        <li>Node JS</li>
-        <li>MongoDB</li>
-        <li>JavaScript</li>
-      </ul>
-
-      <br />
-
-      <h2>Projects</h2>
+      {/* Navbar */}
 
       <div
         style={{
-          background: "#111827",
-          padding: "20px",
-          borderRadius: "10px",
-          marginTop: "10px",
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "20px 40px",
+          background: "#0f172a",
         }}
       >
-        <h3>pothole detection</h3>
+        <h2>{username}</h2>
 
-        <p>
-          smart pothole detection with alert systemgit 
-          Raspberry Pi.
-        </p>
+        <div style={{ display: "flex", gap: "20px" }}>
+          <p>About</p>
+          <p>Skills</p>
+          <p>Projects</p>
+          <p>Contact</p>
+        </div>
       </div>
 
-      <br />
+      {/* Hero Section */}
 
-      <button
+      <div style={{ padding: "80px 40px" }}>
+        <h1 style={{ fontSize: "60px" }}>
+          Hi, I'm {username}
+        </h1>
+
+        <h2 style={{ color: "#38bdf8" }}>
+          Full Stack Developer
+        </h2>
+
+        <p
+          style={{
+            maxWidth: "600px",
+            marginTop: "20px",
+            lineHeight: "30px",
+          }}
+        >
+          I create modern and responsive web applications
+          using React, Node.js.
+        </p>
+
+        <button
+          style={{
+            marginTop: "20px",
+            padding: "12px 24px",
+            background: "#38bdf8",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+          }}
+        >
+          Hire Me
+        </button>
+      </div>
+
+      {/* Skills */}
+
+      <div style={{ padding: "40px" }}>
+        <h1>Skills</h1>
+
+        <ul>
+          <li>React JS</li>
+          <li>Node JS</li>
+          <li>MongoDB</li>
+          <li>Express JS</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+
+      {/* Projects */}
+
+      <div style={{ padding: "40px" }}>
+        <h1>Projects</h1>
+
+        <div
+          style={{
+            background: "#111827",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px",
+          }}
+        >
+          <h2>PVC Bird Repeller</h2>
+
+          <p>
+            PVC Bird Repeller using
+            Ardiuno.
+          </p>
+        </div>
+
+        <div
+          style={{
+            background: "#111827",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px",
+          }}
+        >
+          <h2>Smart Pothole Detection</h2>
+
+          <p>
+            Smart pothole detection and alert system.
+          </p>
+        </div>
+      </div>
+
+      {/* Footer */}
+
+      <div
         style={{
-          padding: "10px 20px",
-          background: "#38bdf8",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
+          textAlign: "center",
+          padding: "30px",
+          background: "#0f172a",
         }}
       >
-        Contact Me
-      </button>
+        © 2026 Vaibhav Waghmode
+      </div>
     </div>
   );
 }
