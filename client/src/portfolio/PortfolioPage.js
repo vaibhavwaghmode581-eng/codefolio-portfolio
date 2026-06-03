@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 function PortfolioPage() {
-  const { username } = useVaibhav();
+  const { username } = useParams();
 
   return (
     <div
