@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 
-import MinimalLayout from "./layouts/MinimalLayout";
-import CyberpunkLayout from "./layouts/CyberpunkLayout";
-import CorporateLayout from "./layouts/CorporateLayout";
+import MinimalLayout from "../layouts/MinimalLayout";
+import CyberpunkLayout from "../layouts/CyberpunkLayout";
+import CorporateLayout from "../layouts/CorporateLayout";
 
 function PortfolioPage() {
   const { username } = useParams();
