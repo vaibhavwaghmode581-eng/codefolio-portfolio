@@ -49,10 +49,10 @@ function PortfolioPage() {
           marginTop: "10px",
         }}
       >
-        <h3>Smart Energy Meter</h3>
+        <h3>pothole detection</h3>
 
         <p>
-          smart pothole detection with alert system
+          smart pothole detection with alert systemgit 
           Raspberry Pi.
         </p>
       </div>
