@@ -24,14 +24,14 @@ function PortfolioPage() {
         {
           title: "Smart Pothole Detection",
           description:
-            "AI and IoT based system to detect potholes and alert drivers in real time.",
+            "Rasberry pi based system to detect potholes and alert drivers in real time.",
           tech: "Python, OpenCV, Raspberry Pi, IoT",
         },
         {
           title: "PVC Bird Repeller",
           description:
-            "Embedded system project used to repel birds from agricultural fields.",
-          tech: "Embedded C, Sensors, PCB",
+            "Embedded system project used to repeller birds from agricultural fields.",
+          tech: "Embedded C, Sensors, Relay",
         },
         {
           title: "Portfolio Website",
