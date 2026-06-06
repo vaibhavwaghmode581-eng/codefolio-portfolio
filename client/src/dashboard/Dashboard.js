@@ -7,17 +7,14 @@ function Dashboard() {
   const data = watch();
 
   const handleSave = () => {
-    localStorage.setItem(
-      "portfolio",
-      JSON.stringify(data)
-    );
-
+    localStorage.setItem("portfolio", JSON.stringify(data));
     alert("Portfolio Saved Successfully!");
   };
 
   return (
     <div className="container">
-      {/* Form Section */}
+
+      {/* Left Side Form */}
 
       <div className="form-section">
         <h1>Portfolio Builder</h1>
@@ -33,7 +30,12 @@ function Dashboard() {
         />
 
         <input
-          placeholder="Skills (comma separated)"
+          placeholder="College Name"
+          {...register("college")}
+        />
+
+        <input
+          placeholder="Skills"
           {...register("skills")}
         />
 
@@ -68,13 +70,8 @@ function Dashboard() {
         />
 
         <select {...register("template")}>
-          <option value="Cyberpunk">
-            Cyberpunk
-          </option>
-
-          <option value="Minimal">
-            Minimal
-          </option>
+          <option value="Cyberpunk">Cyberpunk</option>
+          <option value="Minimal">Minimal</option>
         </select>
 
         <button onClick={handleSave}>
@@ -82,32 +79,22 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Preview Section */}
+      {/* Right Side Preview */}
 
-      <div className="preview-section">
+      <div
+        className={
+          data.template === "Minimal"
+            ? "preview-section-minimal"
+            : "preview-section"
+        }
+      >
         <h1>{data.name || "Your Name"}</h1>
 
-        <p>{data.bio || "Your Bio"}</p>
+        <h3>{data.college}</h3>
 
-        <h2>Skills</h2>
+        <p>{data.bio}</p>
 
-        <div>
-          {data.skills
-            ?.split(",")
-            .map((skill, index) => (
-              <span
-                key={index}
-                style={{
-                  marginRight: "10px",
-                  padding: "5px 10px",
-                  background: "#2563eb",
-                  borderRadius: "10px",
-                }}
-              >
-                {skill}
-              </span>
-            ))}
-        </div>
+        <h3>{data.skills}</h3>
 
         <h2>Projects</h2>
 
@@ -121,41 +108,43 @@ function Dashboard() {
 
         <p>{data.template}</p>
 
-        <div style={{ marginTop: "20px" }}>
-          {data.github && (
-            <a
-              href={data.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button>GitHub</button>
-            </a>
-          )}
+        <br />
 
-          {"  "}
+        {data.github && (
+          <a
+            href={data.github}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button>GitHub</button>
+          </a>
+        )}
 
-          {data.linkedin && (
-            <a
-              href={data.linkedin}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button>LinkedIn</button>
-            </a>
-          )}
+        <br />
+        <br />
 
-          {"  "}
+        {data.linkedin && (
+          <a
+            href={data.linkedin}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button>LinkedIn</button>
+          </a>
+        )}
 
-          {data.resume && (
-            <a
-              href={data.resume}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button>Resume</button>
-            </a>
-          )}
-        </div>
+        <br />
+        <br />
+
+        {data.resume && (
+          <a
+            href={data.resume}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button>Resume</button>
+          </a>
+        )}
       </div>
     </div>
   );
