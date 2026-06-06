@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import "../App.css";
 
 function Dashboard() {
   const { register, watch } = useForm();
@@ -6,24 +7,19 @@ function Dashboard() {
   const data = watch();
 
   const handleSave = () => {
+    localStorage.setItem(
+      "portfolio",
+      JSON.stringify(data)
+    );
+
     alert("Portfolio Saved Successfully!");
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-      }}
-    >
-      {/* Left Form */}
+    <div className="container">
+      {/* Form Section */}
 
-      <div
-        style={{
-          width: "50%",
-          padding: "20px",
-        }}
-      >
+      <div className="form-section">
         <h1>Portfolio Builder</h1>
 
         <input
@@ -31,84 +27,87 @@ function Dashboard() {
           {...register("name")}
         />
 
-        <br /><br />
-
         <textarea
           placeholder="Bio"
           {...register("bio")}
         />
 
-        <br /><br />
-
         <input
-          placeholder="Skills"
+          placeholder="Skills (comma separated)"
           {...register("skills")}
         />
-
-        <br /><br />
 
         <input
           placeholder="GitHub Link"
           {...register("github")}
         />
 
-        <br /><br />
-
         <input
           placeholder="LinkedIn Link"
           {...register("linkedin")}
         />
 
-        <br /><br />
+        <input
+          placeholder="Resume Link"
+          {...register("resume")}
+        />
 
         <input
           placeholder="Project 1"
           {...register("project1")}
         />
 
-        <br /><br />
-
         <input
           placeholder="Project 2"
           {...register("project2")}
         />
-
-        <br /><br />
 
         <input
           placeholder="Project 3"
           {...register("project3")}
         />
 
-        <br /><br />
-
         <select {...register("template")}>
-          <option value="Cyberpunk">Cyberpunk</option>
-          <option value="Minimal">Minimal</option>
-        </select>
+          <option value="Cyberpunk">
+            Cyberpunk
+          </option>
 
-        <br /><br />
+          <option value="Minimal">
+            Minimal
+          </option>
+        </select>
 
         <button onClick={handleSave}>
           Save Portfolio
         </button>
       </div>
 
-      {/* Right Preview */}
+      {/* Preview Section */}
 
-      <div
-        style={{
-          width: "50%",
-          background: "#111827",
-          color: "white",
-          padding: "20px",
-        }}
-      >
-        <h1>{data.name}</h1>
+      <div className="preview-section">
+        <h1>{data.name || "Your Name"}</h1>
 
-        <p>{data.bio}</p>
+        <p>{data.bio || "Your Bio"}</p>
 
-        <h3>{data.skills}</h3>
+        <h2>Skills</h2>
+
+        <div>
+          {data.skills
+            ?.split(",")
+            .map((skill, index) => (
+              <span
+                key={index}
+                style={{
+                  marginRight: "10px",
+                  padding: "5px 10px",
+                  background: "#2563eb",
+                  borderRadius: "10px",
+                }}
+              >
+                {skill}
+              </span>
+            ))}
+        </div>
 
         <h2>Projects</h2>
 
@@ -122,29 +121,41 @@ function Dashboard() {
 
         <p>{data.template}</p>
 
-        <br />
+        <div style={{ marginTop: "20px" }}>
+          {data.github && (
+            <a
+              href={data.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button>GitHub</button>
+            </a>
+          )}
 
-        {data.github && (
-          <a
-            href={data.github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button>GitHub</button>
-          </a>
-        )}
+          {"  "}
 
-        <br /><br />
+          {data.linkedin && (
+            <a
+              href={data.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button>LinkedIn</button>
+            </a>
+          )}
 
-        {data.linkedin && (
-          <a
-            href={data.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button>LinkedIn</button>
-          </a>
-        )}
+          {"  "}
+
+          {data.resume && (
+            <a
+              href={data.resume}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button>Resume</button>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
